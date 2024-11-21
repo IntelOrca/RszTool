@@ -343,12 +343,6 @@ namespace RszTool
                         {
                             if (items[j] is int instanceId)
                             {
-                                if (instanceId >= instance.Index && field.IsTypeInferred)
-                                {
-                                    // TODO: may detect error, should roll back
-                                    field.type = RszFieldType.S32;
-                                    throw new RszRetryOpenException($"Detected {instance.RszClass.name}.{field.name} as Object before, but seems wrong");
-                                }
                                 items[j] = InstanceList[instanceId];
                                 InstanceUnflatten(InstanceList[instanceId]);
                             }
@@ -356,12 +350,6 @@ namespace RszTool
                     }
                     else if (instance.Values[i] is int instanceId)
                     {
-                        if (instanceId >= instance.Index && field.IsTypeInferred)
-                        {
-                            // TODO: may detect error, should roll back
-                            field.type = RszFieldType.S32;
-                            throw new RszRetryOpenException($"Detected {instance.RszClass.name}.{field.name} as Object before, but seems wrong");
-                        }
                         instance.Values[i] = InstanceList[instanceId];
                         InstanceUnflatten(InstanceList[instanceId]);
                     }

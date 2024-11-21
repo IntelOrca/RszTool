@@ -113,7 +113,17 @@ namespace RszTool
                 set => parentRef = value != null ? new(value) : null;
             }
 
-            public string? Name => (Instance?.GetFieldValue("v0") ?? Instance?.GetFieldValue("Name")) as string;
+            public string? Name
+            {
+                get => (Instance?.GetFieldValue("v0") ?? Instance?.GetFieldValue("Name")) as string;
+                set
+                {
+                    if (Instance != null && value != null)
+                    {
+                        Instance?.SetFieldValue("Name", value);
+                    }
+                }
+            }
 
             public int? ObjectId => Info?.Data.objectId;
 
