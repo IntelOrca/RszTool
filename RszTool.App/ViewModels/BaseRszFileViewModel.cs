@@ -213,7 +213,7 @@ namespace RszTool.App.ViewModels
             if (arg is RszFieldArrayInstanceItemViewModel item)
             {
                 CopiedInstance = item.Instance;
-                Console.WriteLine(CopiedInstance?.Stringify());
+                // Console.WriteLine(CopiedInstance?.Stringify());
             }
             else if (arg is RszFieldArrayNormalItemViewModel normalItem)
             {

@@ -21,7 +21,7 @@ namespace RszTool.App.ViewModels
         {
             if (arg is RszInstance instance)
             {
-                Console.WriteLine(instance.Stringify());
+                // Console.WriteLine(instance.Stringify());
             }
         }
 
@@ -29,7 +29,7 @@ namespace RszTool.App.ViewModels
         {
             if (arg is RszFieldArrayInstanceItemViewModel item)
             {
-                Console.WriteLine(item.Instance.Stringify());
+                // Console.WriteLine(item.Instance.Stringify());
             }
         }
     }
