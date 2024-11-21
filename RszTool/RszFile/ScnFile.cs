@@ -287,9 +287,6 @@ namespace RszTool
                 GameName.re8 => ".20",
                 GameName.re7 => ".18",
                 GameName.re7rt => ".20",
-                GameName.dmc5 =>".19",
-                GameName.mhrise => ".20",
-                GameName.sf6 => ".20",
                 _ => null
             };
         }
@@ -454,7 +451,9 @@ namespace RszTool
             {
                 if (folderIdxMap.TryGetValue(info.Data.parentId, out var folder))
                 {
-                    folder.Children.Add(folderIdxMap[info.Data.objectId]);
+                    var childFolder = folderIdxMap[info.Data.objectId];
+                    folder.Children.Add(childFolder);
+                    childFolder.Parent = folder;
                 }
             }
 
@@ -505,6 +504,7 @@ namespace RszTool
                 }
             }
         }
+            
 
         /// <summary>
         /// 收集Folder以及子Folder的实例和组件实例
@@ -690,7 +690,7 @@ namespace RszTool
             foreach (var prefab in folder.Prefabs)
             {
                 prefab.parentId = infoData.objectId;
-                // PrefabInfoList.GetIndexOrAdd(prefab);
+                PrefabInfoList.GetIndexOrAdd(prefab);
             }
         }
 
@@ -706,7 +706,7 @@ namespace RszTool
             var children = parent?.Children ?? GameObjectDatas;
             if (children == null)
             {
-                Console.Error.WriteLine("GameObjectDatas and parent is null");
+                // Console.Error.WriteLine("GameObjectDatas and parent is null");
                 return null;
             }
             foreach (var child in children)
@@ -721,7 +721,7 @@ namespace RszTool
                     if (result != null) return result;
                 }
             }
-            Console.Error.WriteLine($"GameObject {name} not found");
+            // Console.Error.WriteLine($"GameObject {name} not found");
             return null;
         }
 
@@ -739,7 +739,7 @@ namespace RszTool
             var folders = parent?.Children ?? FolderDatas;
             if (folders == null)
             {
-                Console.Error.WriteLine("FolderDatas and parent is null");
+                // Console.Error.WriteLine("FolderDatas and parent is null");
                 return null;
             }
             foreach (var folder in folders!)
@@ -758,7 +758,7 @@ namespace RszTool
                     if (result != null) return result;
                 }
             }
-            Console.Error.WriteLine($"GameObject {name} not found");
+            // Console.Error.WriteLine($"GameObject {name} not found");
             return null;
         }
 
@@ -773,7 +773,7 @@ namespace RszTool
             var folders = parent?.Children ?? FolderDatas;
             if (folders == null)
             {
-                Console.Error.WriteLine("FolderDatas and parent is null");
+                // Console.Error.WriteLine("FolderDatas and parent is null");
                 yield break;
             }
             foreach (var folder in folders)
@@ -852,7 +852,7 @@ namespace RszTool
         {
             if (RSZ == null)
             {
-                Console.Error.WriteLine($"RSZ is null");
+                // Console.Error.WriteLine($"RSZ is null");
                 return false;
             }
             List<RszInstance> rszInstances = new();
@@ -863,7 +863,7 @@ namespace RszTool
             newRSZ.RebuildInstanceInfo(false);
             // foreach (var item in newRSZ.InstanceList)
             // {
-            //     Console.WriteLine(newRSZ.InstanceStringify(item));
+            //     // // Console.WriteLine(newRSZ.InstanceStringify(item));
             // }
             // write
             newRSZ.Write();

@@ -42,7 +42,7 @@ namespace RszTool
             Start = FileHandler.Tell();
             bool result = DoRead();
             Size = FileHandler.Tell() - Start;
-            // Console.WriteLine($"{this} Start: {Start}, Read size: {Size}");
+            // // // Console.WriteLine($"{this} Start: {Start}, Read size: {Size}");
             return result;
         }
 
@@ -64,7 +64,7 @@ namespace RszTool
             Start = FileHandler.Tell();
             bool result = DoWrite();
             Size = FileHandler.Tell() - Start;
-            // Console.WriteLine($"{this} Start: {Start}, Write size: {Size}");
+            // // // Console.WriteLine($"{this} Start: {Start}, Write size: {Size}");
             return result;
         }
 
@@ -110,7 +110,7 @@ namespace RszTool
             }
             catch (Exception e)
             {
-                Console.WriteLine(e);
+                // // Console.WriteLine(e);
                 result = false;
             }
             FileHandler = originHandler;

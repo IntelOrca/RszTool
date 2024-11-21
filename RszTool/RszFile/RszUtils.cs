@@ -120,11 +120,11 @@ namespace RszTool
             GetFileExtension(path, out string realExtension, out string realVersion);
             if (extension != realExtension)
             {
-                Console.Error.WriteLine($"extension should be {extension}, got {realExtension}");
+                // Console.Error.WriteLine($"extension should be {extension}, got {realExtension}");
             }
             if (version != realVersion)
             {
-                Console.Error.WriteLine($"extension should be {version}, got {realVersion}");
+                // Console.Error.WriteLine($"extension should be {version}, got {realVersion}");
             }
         }
     }
