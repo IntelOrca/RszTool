@@ -20,7 +20,7 @@ namespace RszTool.Common
         public void End()
         {
             long endUs = DateTime.Now.Ticks / 10;
-            Console.WriteLine($"time of {Name}: {endUs - StartUs} us");
+            // // Console.WriteLine($"time of {Name}: {endUs - StartUs} us");
         }
     }
 

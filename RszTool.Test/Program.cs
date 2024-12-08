@@ -27,8 +27,8 @@ namespace RszTool.Test
             record.Start("RszParser");
             RszParser parser = new("rszre4.json");
             record.End();
-            Console.WriteLine(parser.GetRSZClassName(0x1001342f));
-            Console.WriteLine(parser.GetFieldName(0x1004b6b4, 1));
+            // Console.WriteLine(parser.GetRSZClassName(0x1001342f));
+            // Console.WriteLine(parser.GetFieldName(0x1004b6b4, 1));
         }
 
         static void TestParseUser()
@@ -47,7 +47,7 @@ namespace RszTool.Test
             {
                 foreach (var item in newUserFile.RSZ.InstanceList)
                 {
-                    Console.WriteLine(item.Stringify());
+                    // Console.WriteLine(item.Stringify());
                 }
             }
         }
@@ -60,7 +60,7 @@ namespace RszTool.Test
             userFile.Read();
             if (userFile.RSZ != null)
             {
-                Console.WriteLine(userFile.RSZ.ObjectsStringify());
+                // Console.WriteLine(userFile.RSZ.ObjectsStringify());
             }
         }
 
@@ -81,7 +81,7 @@ namespace RszTool.Test
             {
                 foreach (var item in newPfbFile.RSZ.InstanceList)
                 {
-                    Console.WriteLine(item.Stringify());
+                    // Console.WriteLine(item.Stringify());
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace RszTool.Test
             {
                 foreach (var item in newPfbFile.RSZ.InstanceList)
                 {
-                    Console.WriteLine(item.Stringify());
+                    // Console.WriteLine(item.Stringify());
                 }
             }
         }
@@ -117,13 +117,13 @@ namespace RszTool.Test
 
             foreach (var item in pfbFile.UserdataInfoList)
             {
-                Console.WriteLine(item.pathOffset.ToString("X"));
+                // Console.WriteLine(item.pathOffset.ToString("X"));
             }
             foreach (var item in pfbFile.RSZ!.RSZUserDataInfoList)
             {
                 if (item is RSZUserDataInfo userDataInfo)
                 {
-                    Console.WriteLine(userDataInfo.pathOffset.ToString("X"));
+                    // Console.WriteLine(userDataInfo.pathOffset.ToString("X"));
                 }
             }
 
@@ -131,7 +131,7 @@ namespace RszTool.Test
             {
                 foreach (var item in pfbFile.RSZ.InstanceList)
                 {
-                    Console.WriteLine(pfbFile.RSZ.InstanceStringify(item));
+                    // Console.WriteLine(pfbFile.RSZ.InstanceStringify(item));
                 }
             }
         }
@@ -153,7 +153,7 @@ namespace RszTool.Test
             {
                 foreach (var item in newScnFile.RSZ.InstanceList)
                 {
-                    Console.WriteLine(item.Stringify());
+                    // Console.WriteLine(item.Stringify());
                 }
             }
         }
@@ -167,13 +167,13 @@ namespace RszTool.Test
 
             if (scnFile.RSZ != null)
             {
-                // Console.WriteLine(scnFile.RSZ.ObjectsStringify());
+                // // Console.WriteLine(scnFile.RSZ.ObjectsStringify());
                 scnFile.SetupGameObjects();
                 if (scnFile.GameObjectDatas != null)
                 {
                     foreach (var item in scnFile.GameObjectDatas)
                     {
-                        Console.WriteLine(item.Name);
+                        // Console.WriteLine(item.Name);
                     }
                 }
 
@@ -189,12 +189,12 @@ namespace RszTool.Test
 
             if (scnFile.RSZ != null)
             {
-                // Console.WriteLine(scnFile.RSZ.ObjectsStringify());
+                // // Console.WriteLine(scnFile.RSZ.ObjectsStringify());
                 scnFile.SetupGameObjects();
                 FileHandler newFileHandler = new("test/gimmick_st66_101_new.rsz");
                 RSZFile newRSZ = new(option, newFileHandler);
                 bool success = scnFile.ExtractGameObjectRSZ("設置機銃砦１", newRSZ);
-                Console.WriteLine(success);
+                // Console.WriteLine(success);
             }
         }
 
@@ -212,7 +212,7 @@ namespace RszTool.Test
             {
                 pfbFile.Write();
             }
-            Console.WriteLine(success);
+            // Console.WriteLine(success);
         }
 
         static void TestImportGameObject()
@@ -272,7 +272,7 @@ namespace RszTool.Test
             {
                 uint hash = PakHash.GetHash(strings[i]);
                 string result = hash == hashes[i] ? "" : $", expacted {hashes[i]:X}";
-                Console.WriteLine($"hash of {strings[i]} is {hash:X}{result}");
+                // Console.WriteLine($"hash of {strings[i]} is {hash:X}{result}");
             }
         }
 
@@ -294,7 +294,7 @@ namespace RszTool.Test
             }
             foreach (var item in enumSet)
             {
-                Console.WriteLine(item);
+                // Console.WriteLine(item);
             }
         }
     }

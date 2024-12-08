@@ -257,9 +257,6 @@ namespace RszTool
                 GameName.re8 => ".19",
                 GameName.re7 => ".6",
                 GameName.re7rt => ".21",
-                GameName.dmc5 =>".10",
-                GameName.mhrise => ".23",
-                GameName.sf6 => ".31",
                 _ => null
             };
         }

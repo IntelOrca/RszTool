@@ -81,7 +81,7 @@ namespace RszTool
             if (RSZUserData != null || RszClass.fields.Length == 0) return true;
 
             AlignFirstField(handler);
-            // Console.WriteLine($"read {Name} at: {handler.Position:X}");
+            // // // Console.WriteLine($"read {Name} at: {handler.Position:X}");
             for (int i = 0; i < RszClass.fields.Length; i++)
             {
                 Values[i] = ReadRszField(handler, i);
@@ -100,7 +100,7 @@ namespace RszTool
         {
             RszField field = RszClass.fields[index];
             handler.Align(field.array ? 4 : field.align);
-            // Console.WriteLine($"    read at: {handler.Position:X} {field.original_type} {field.name}");
+            // // // Console.WriteLine($"    read at: {handler.Position:X} {field.original_type} {field.name}");
             if (field.array)
             {
                 int count = handler.ReadInt();
@@ -108,7 +108,7 @@ namespace RszTool
                 {
                     throw new InvalidDataException($"{field.name} count {count} < 0");
                 }
-                if (count > 2048)
+                if (count > 20000)
                 {
                     throw new InvalidDataException($"{field.name} count {count} too large");
                 }
@@ -152,7 +152,7 @@ namespace RszTool
                     field.type = RszFieldType.Object;
                     field.IsTypeInferred = true;
                     data = intValue;
-                    Console.WriteLine($"Detect {Name}.{field.name} as Object");
+                    // // Console.WriteLine($"Detect {Name}.{field.name} as Object");
                     return true;
                 }
                 // 检测float和int
@@ -469,7 +469,7 @@ namespace RszTool
             // if has RSZUserData, it is external
             if (RSZUserData != null || RszClass.fields.Length == 0) return true;
             AlignFirstField(handler);
-            // Console.WriteLine($"write {Name} at: {(handler.Offset + handler.Tell()):X}");
+            // // // Console.WriteLine($"write {Name} at: {(handler.Offset + handler.Tell()):X}");
             for (int i = 0; i < RszClass.fields.Length; i++)
             {
                 WriteRszField(handler, i);
@@ -487,7 +487,7 @@ namespace RszTool
         {
             RszField field = RszClass.fields[index];
             handler.Align(field.array ? 4 : field.align);
-            // Console.WriteLine($"    write at: {handler.Position:X} {field.original_type} {field.name}");
+            // // // Console.WriteLine($"    write at: {handler.Position:X} {field.original_type} {field.name}");
             if (field.array)
             {
                 List<object> list = (List<object>)Values[index];
