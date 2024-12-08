@@ -27,6 +27,22 @@ namespace RszTool
 
         public Dictionary<uint, RszClass> ClassDict => classDict;
 
+        public RszParser(IEnumerable<RszClass> classes)
+        {
+            classDict = classes.ToDictionary(x => x.typeId);
+            classNameDict = classes.ToDictionary(x => x.name);
+            foreach (var c in classes)
+            {
+                foreach (var field in c.fields)
+                {
+                    if (field.type == RszFieldType.Data)
+                    {
+                        field.GuessDataType();
+                    }
+                }
+            }
+        }
+
         public RszParser(string jsonPath)
         {
             classDict = new();

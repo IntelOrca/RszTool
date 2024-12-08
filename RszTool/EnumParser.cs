@@ -21,6 +21,16 @@ namespace RszTool
 
         public EnumDict EnumDict { get; }
 
+        public static EnumParser FromJson(string json)
+        {
+            return new EnumParser(new EnumDict(JsonSerializer.Deserialize<Dictionary<string, EnumData>>(json) ?? []));
+        }
+
+        public EnumParser(EnumDict enumDict)
+        {
+            EnumDict = enumDict;
+        }
+
         public EnumParser(string jsonPath)
         {
             if (File.Exists(jsonPath))

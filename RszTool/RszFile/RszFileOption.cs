@@ -7,6 +7,14 @@ namespace RszTool
         public RszParser RszParser { get; set; }
         public EnumParser EnumParser { get; set; }
 
+        public RszFileOption(GameName gameName, GameVersion version, RszParser rszParser, EnumParser enumParser)
+        {
+            GameName = gameName;
+            Version = version;
+            RszParser = rszParser;
+            EnumParser = enumParser;
+        }
+
         public RszFileOption(GameName gameName)
         {
             GameName = gameName;
