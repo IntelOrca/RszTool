@@ -370,6 +370,7 @@ namespace RszTool
                 RszFieldType.Cone => typeof(via.Cone),
                 RszFieldType.Line => typeof(via.Line),
                 RszFieldType.LineSegment => typeof(via.LineSegment),
+                RszFieldType.OBB => typeof(via.OBB),
                 RszFieldType.Plane => typeof(via.Plane),
                 RszFieldType.PlaneXZ => typeof(via.PlaneXZ),
                 RszFieldType.Size => typeof(via.Size),
